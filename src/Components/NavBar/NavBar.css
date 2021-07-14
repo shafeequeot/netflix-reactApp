@@ -1,0 +1,23 @@
+
+
+.NavBar{
+background-color: rgba(2, 22,12, 0.8);
+width: 100%;
+height: 50px;
+padding: 20px;
+display: flex;
+justify-content: space-between;
+
+
+}
+
+.logo{
+    position: auto;
+    width: 230px;
+    left: 20px;
+}
+.avatar{
+position: fixed;
+right: 20px;
+width: 80px;
+}
