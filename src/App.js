@@ -13,7 +13,8 @@ function App() {
     <div className="App">
       <NavBar/>
       <Banner/>
-      <RowTile/>
+      <RowTile title="Other Rocks"/>
+      <RowTile title="OtRocks 111" size="small"/>
     </div>
   );
 }

@@ -20,3 +20,9 @@ overflow-y: hidden;
 .poster::-webkit-scrollbar{
     display: none;
 }
+
+.small{
+    max-height: 150px;
+   
+    padding: 10px;
+}

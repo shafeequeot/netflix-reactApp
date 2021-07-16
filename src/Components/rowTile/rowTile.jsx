@@ -1,26 +1,38 @@
-import React from 'react'
+
+
+import React, { useEffect, useState } from 'react'
+import axios from '../constents/axios'
+import { API_KEY , imgURL} from '../constents/constants'
 import "./rowTile.css"
 
-function RowTile() {
+
+function RowTile(props) {
+    
+    const [otTiles, setOtTiles] = useState([])
+ useEffect(() => {
+     
+    axios.get(`discover/tv?api_key=${API_KEY}&language=en-US`).then((response)=>{
+       
+        setOtTiles(response.data.results)
+        console.log(response.data)
+    })
+    
+ }, [])
     return (
         <div className="row">
-            <h2>Title</h2>
+            <h2>{props.title}</h2>
             <div className="poster">
-            <img className="image" src="https://0.soompi.io/wp-content/uploads/2020/08/17233550/I.M-2.jpg" alt="tile 1"></img>
-            <img className="image" src="https://0.soompi.io/wp-content/uploads/2020/08/17233550/I.M-2.jpg" alt="tile 1"></img>
-            <img className="image" src="https://0.soompi.io/wp-content/uploads/2020/08/17233550/I.M-2.jpg" alt="tile 1"></img>
-            <img className="image" src="https://0.soompi.io/wp-content/uploads/2020/08/17233550/I.M-2.jpg" alt="tile 1"></img>
-            <img className="image" src="https://0.soompi.io/wp-content/uploads/2020/08/17233550/I.M-2.jpg" alt="tile 1"></img>
-            <img className="image" src="https://0.soompi.io/wp-content/uploads/2020/08/17233550/I.M-2.jpg" alt="tile 1"></img>
-            <img className="image" src="https://0.soompi.io/wp-content/uploads/2020/08/17233550/I.M-2.jpg" alt="tile 1"></img>
-            <img className="image" src="https://0.soompi.io/wp-content/uploads/2020/08/17233550/I.M-2.jpg" alt="tile 1"></img>
-            <img className="image" src="https://0.soompi.io/wp-content/uploads/2020/08/17233550/I.M-2.jpg" alt="tile 1"></img>
-            <img className="image" src="https://0.soompi.io/wp-content/uploads/2020/08/17233550/I.M-2.jpg" alt="tile 1"></img>
-            <img className="image" src="https://0.soompi.io/wp-content/uploads/2020/08/17233550/I.M-2.jpg" alt="tile 1"></img>
-            <img className="image" src="https://0.soompi.io/wp-content/uploads/2020/08/17233550/I.M-2.jpg" alt="tile 1"></img>
-            <img className="image" src="https://0.soompi.io/wp-content/uploads/2020/08/17233550/I.M-2.jpg" alt="tile 1"></img>
-        </div>
-        </div>
+           
+            {
+                otTiles.map((obj)=>{
+                    return(
+                    <img className={props.size ? "small" : "image"} src={`${imgURL+obj.backdrop_path}`} alt="tile 1"></img>
+                    )
+                })
+            }
+            
+            
+        </div></div>
     )
 }
 
